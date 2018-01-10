@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>
+			Graduation!
+		</title>
+	</head>
+	
+	<body>
+		<center>
+			<script type = "text/javascript">
+				var graduating, grad_school, year;
+				
+				graduating = prompt("Are you graduating this quarter?");
+				if (graduating == "yes") {
+					grad_school = prompt("Are you planning on going to grad school");
+					
+					if (grad_school == "yes") {
+						document.write("All your hard work will pay off!");
+					}
+					else {
+						document.write("I hope you find a job that you love!");
+					}
+				}
+				else {
+					year = prompt("What year are you going in to?");
+					
+					if (year == "2") {
+						document.write("You still have a lot of time left, enjoy yourself!");
+					}
+					else if (year == "3") {
+						document.write("You're halfway there!");
+					}
+					else {
+						document.write("Almost done!");
+					}
+				}
+			</script>
+		</center>
+	</body> 
+</html>

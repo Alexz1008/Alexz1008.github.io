@@ -1,0 +1,140 @@
+<html>
+	<head>
+		<title> Avengers Battle</title>
+		<style type = "text/css">
+			img {
+				height:200px;
+				width:200px;
+			}
+			div {
+				height: 120px;
+				width: 400px;
+				border: 2px solid black;
+			}
+			button {
+				height: 50px;
+				width: 200px;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			var thanosHP = 950;
+			var avengersHP = 1500;
+			var avengersAttackName = "";
+			var avengersAttackPower = 0;
+			var avengersAttackRank = 0;
+			var thanosAttackRank = 0;
+			var thanosAttackName = "";
+			var thanosAttackPower = 0;
+			var avengerName = "";
+			var gameOver = false;
+			
+			function attack()
+			{
+				if (gameOver == false) {
+					thanosAttack();
+					avengersAttack();
+					result();
+				}
+			}
+			function thanosAttack() {
+				thanosAttackRank = Math.floor((Math.random()*2)+1);
+				if(thanosAttackRank == 1) {
+					thanosAttackName = "Cosmic Punch";
+					thanosAttackPower = 120;
+				}
+				else {
+					thanosAttackName = "Power Slam";
+					thanosAttackPower = 160;
+				}
+				avengersHP -= thanosAttackPower;
+				document.getElementById("avengersHP").innerHTML = "HP " + avengersHP;
+				document.getElementById("screen").innerHTML = "<p>Thanos used " + thanosAttackName +
+					"! Avengers lost " + thanosAttackPower + "HP.</p>"
+			}
+			function avengersAttack() {
+				if(avengersAttackRank == 1) {
+					avengersAttackName = "UniBeam";
+					avengersAttackPower = 150;
+					avengerName = "Iron Man";
+				}
+				else if(avengersAttackRank == 2) {
+					avengersAttackName = "Hammer Slam";
+					avengersAttackPower = 130;
+					avengerName = "Thor";
+				}
+				else if(avengersAttackRank == 3) {
+					avengersAttackName = "Shield Throw";
+					avengersAttackPower = 95;
+					avengerName = "Captain America";
+				}
+				else if(avengersAttackRank == 4) {
+					avengersAttackName = "Hulk Smash";
+					avengersAttackPower = 140;
+					avengerName = "Hulk";
+				}
+				thanosHP -= avengersAttackPower;
+				document.getElementById("screen").innerHTML += "<p>" + avengerName + " used " + avengersAttackName + "! Thanos lost " + avengersAttackPower + " HP.</p>";
+				document.getElementById("thanosHP").innerHTML = "HP " + thanosHP;
+			}
+			function result() {
+				if(thanosHP <= 0) {
+					document.getElementById("screen").innerHTML = "<p>Avengers have saved the world</p>";
+					gameOver = true;
+				}
+				else if(avengersHP <= 0) {
+					document.getElementById("screen").innerHTML = "<p>Thanos has destroyed the world</p>";
+					gameOver = true;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<h1> Avengers Battle: Avengers vs Thanos </h1>
+		<center>
+		
+		<table>
+			<tr>
+				<td>
+					Thanos
+					<p id ="thanosHP">HP 950</p>
+				</td>
+				<td>
+					<img src ="thanos.jpg"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="avenger.jpg"/>
+				</td>
+				<td>
+					Avengers
+					<p id="avengersHP">HP 1500</p>
+				</td>
+			</tr>
+		</table>
+		<div id="screen">
+			<p>Which Avenger should attack?</p>
+		</div>
+		
+		<table>
+			<tr>
+				<td>
+					<button onclick="avengersAttackRank = 1;attack();">Iron man</button>
+				</td>
+				<td>
+					<button onclick="avengersAttackRank = 2;attack();">Thor</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button onclick="avengersAttackRank = 3;attack();">Captain America</button>
+				</td>
+				<td>
+					<button onclick="avengersAttackRank = 4;attack();">Hulk</button>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
